@@ -1,0 +1,66 @@
+<!--
+ * @Author: lv 1294432739@qq.com
+ * @Date: 2023-05-27 16:59:04
+ * @LastEditors: lv 1294432739@qq.com
+ * @LastEditTime: 2023-05-27 16:59:07
+ * @FilePath: \card\Card\src\pages\Home\look.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>封面图设计</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="coverCanvas" width="1080" height="1440"></canvas>
+
+  <script>
+    // 封面图设计函数
+    function designCover(title, subtitle, description, gradientStartColor, gradientEndColor, subtitleFontSize, descriptionFontSize, titleFontSize) {
+      var canvas = document.getElementById('coverCanvas');
+      var ctx = canvas.getContext('2d');
+
+      // 渐变色背景
+      var gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, gradientStartColor);
+      gradient.addColorStop(1, gradientEndColor);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // 小标题
+      ctx.font = subtitleFontSize + 'px Arial';
+      ctx.fillStyle = '#000000';
+      ctx.textAlign = 'center';
+      ctx.fillText(subtitle, canvas.width / 2, canvas.height * 0.24);
+
+      // 描述
+      ctx.font = descriptionFontSize + 'px Arial';
+      ctx.fillText(description, canvas.width / 2, canvas.height * 0.28);
+
+      // 大标题
+      ctx.font = titleFontSize + 'px Arial';
+      ctx.fillText(title, canvas.width / 2, canvas.height * 0.45);
+    }
+
+    window.addEventListener('load', function () {
+      // 使用封面图设计函数生成封面
+      designCover(
+        '「不备孕的话容易怀不上」', // 标题
+        '内容 (ChatGPT)', // 小标题
+        '内容 (ChatGPT answers every question)', // 描述
+        '#f64188', // 渐变色起始颜色
+        '#f89c3e', // 渐变色结束颜色
+        90, // 小标题字体大小
+        40, // 描述字体大小
+        110 // 标题字体大小
+      );
+    });
+  </script>
+</body>
+</html>
