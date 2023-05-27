@@ -316,7 +316,7 @@ const HomePage: React.FC = () => {
               </div>
             </div>
           )}
-          {showWhat.titleShow && (
+          {showWhat.contentShow && (
             <div>
               <div style={{ ...contentStyle }}>{content}</div>
             </div>
