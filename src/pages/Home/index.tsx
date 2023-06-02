@@ -317,8 +317,14 @@ const HomePage: React.FC = () => {
             </div>
           )}
           {showWhat.contentShow && (
-            <div>
-              <div style={{ ...contentStyle, whiteSpace: 'pre' }}>
+            <div style={{ width: '100%' }}>
+              <div
+                style={{
+                  ...contentStyle,
+                  whiteSpace: 'pre-wrap',
+                  width: '100%',
+                }}
+              >
                 {content}
               </div>
             </div>
