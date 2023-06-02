@@ -318,7 +318,9 @@ const HomePage: React.FC = () => {
           )}
           {showWhat.contentShow && (
             <div>
-              <div style={{ ...contentStyle }}>{content}</div>
+              <div style={{ ...contentStyle, whiteSpace: 'pre' }}>
+                {content}
+              </div>
             </div>
           )}
         </div>
