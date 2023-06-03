@@ -207,7 +207,7 @@ const HomePage: React.FC = () => {
             label="TitleName"
             name="title"
           >
-            <Input />
+            <Input.TextArea />
           </Form.Item>
 
           <Form.Item
@@ -311,6 +311,7 @@ const HomePage: React.FC = () => {
               <div
                 style={{
                   ...titleStyle,
+                  whiteSpace: 'pre-wrap',
                 }}
               >
                 {title}
