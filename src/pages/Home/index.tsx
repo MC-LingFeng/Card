@@ -32,7 +32,7 @@ const divLocation = {
 };
 const HomePage: React.FC = () => {
   const [form] = Form.useForm<ValueType>();
-  const pictureWidth = Form.useWatch('pictureHeight', form);
+  const pictureWidth = Form.useWatch('pictureWidth', form);
   const pictureHeight = Form.useWatch('pictureHeight', form);
   const startColor = Form.useWatch('startColor', form);
   const endColor = Form.useWatch('endColor', form);
@@ -71,6 +71,7 @@ const HomePage: React.FC = () => {
       background: `linear-gradient(${startColor},${endColor})`,
     };
   }, [pictureWidth, pictureHeight, startColor, endColor]);
+  console.log(pictureWidth);
 
   const titleStyle = useMemo(() => {
     return {
@@ -317,12 +318,14 @@ const HomePage: React.FC = () => {
             </div>
           )}
           {showWhat.contentShow && (
-            <div style={{ width: '100%' }}>
+            <div
+            // style={{ width: '100%' }}
+            >
               <div
                 style={{
                   ...contentStyle,
                   whiteSpace: 'pre-wrap',
-                  width: '100%',
+                  // width: '100%',
                 }}
               >
                 {content}
