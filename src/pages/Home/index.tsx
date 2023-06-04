@@ -45,6 +45,7 @@ const HomePage: React.FC = () => {
   const titleBottom = Form.useWatch('titleBottom', form);
 
   const content = Form.useWatch('content', form);
+  const bodyColor = Form.useWatch('bodyColor', form);
   const contentFontSize = Form.useWatch('contentFontSize', form);
   const contentLeft = Form.useWatch('contentLeft', form);
   const contentRight = Form.useWatch('contentRight', form);
@@ -68,9 +69,10 @@ const HomePage: React.FC = () => {
     return {
       width: pictureWidth,
       height: pictureHeight,
+      color: bodyColor,
       background: `linear-gradient(${startColor},${endColor})`,
     };
-  }, [pictureWidth, pictureHeight, startColor, endColor]);
+  }, [pictureWidth, pictureHeight, startColor, endColor, bodyColor]);
   console.log(pictureWidth);
 
   const titleStyle = useMemo(() => {
@@ -155,6 +157,7 @@ const HomePage: React.FC = () => {
             titleTop: 40,
             titleBottom: 0,
             titleFontSize: 90,
+            bodyColor: '#000',
             content: '内容',
             contentFontSize: 14,
             contentLeft: 40,
@@ -201,7 +204,9 @@ const HomePage: React.FC = () => {
           <Form.Item label="EndColor" name="endColor">
             <ColorSelect />
           </Form.Item>
-
+          <Form.Item name="bodyColor" label={'TextColor'}>
+            <ColorSelect />
+          </Form.Item>
           <Form.Item
             hidden={!showWhat.titleShow}
             label="TitleName"
