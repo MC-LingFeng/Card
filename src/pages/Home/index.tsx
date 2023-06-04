@@ -32,7 +32,7 @@ const divLocation = {
 };
 const HomePage: React.FC = () => {
   const [form] = Form.useForm<ValueType>();
-  const pictureWidth = Form.useWatch('pictureHeight', form);
+  const pictureWidth = Form.useWatch('pictureWidth', form);
   const pictureHeight = Form.useWatch('pictureHeight', form);
   const startColor = Form.useWatch('startColor', form);
   const endColor = Form.useWatch('endColor', form);
@@ -45,6 +45,7 @@ const HomePage: React.FC = () => {
   const titleBottom = Form.useWatch('titleBottom', form);
 
   const content = Form.useWatch('content', form);
+  const bodyColor = Form.useWatch('bodyColor', form);
   const contentFontSize = Form.useWatch('contentFontSize', form);
   const contentLeft = Form.useWatch('contentLeft', form);
   const contentRight = Form.useWatch('contentRight', form);
@@ -68,9 +69,11 @@ const HomePage: React.FC = () => {
     return {
       width: pictureWidth,
       height: pictureHeight,
+      color: bodyColor,
       background: `linear-gradient(${startColor},${endColor})`,
     };
-  }, [pictureWidth, pictureHeight, startColor, endColor]);
+  }, [pictureWidth, pictureHeight, startColor, endColor, bodyColor]);
+  console.log(pictureWidth);
 
   const titleStyle = useMemo(() => {
     return {
@@ -154,6 +157,7 @@ const HomePage: React.FC = () => {
             titleTop: 40,
             titleBottom: 0,
             titleFontSize: 90,
+            bodyColor: '#000',
             content: '内容',
             contentFontSize: 14,
             contentLeft: 40,
@@ -200,13 +204,15 @@ const HomePage: React.FC = () => {
           <Form.Item label="EndColor" name="endColor">
             <ColorSelect />
           </Form.Item>
-
+          <Form.Item name="bodyColor" label={'TextColor'}>
+            <ColorSelect />
+          </Form.Item>
           <Form.Item
             hidden={!showWhat.titleShow}
             label="TitleName"
             name="title"
           >
-            <Input />
+            <Input.TextArea />
           </Form.Item>
 
           <Form.Item
@@ -310,6 +316,7 @@ const HomePage: React.FC = () => {
               <div
                 style={{
                   ...titleStyle,
+                  whiteSpace: 'pre-wrap',
                 }}
               >
                 {title}
@@ -317,12 +324,14 @@ const HomePage: React.FC = () => {
             </div>
           )}
           {showWhat.contentShow && (
-            <div style={{ width: '100%' }}>
+            <div
+            // style={{ width: '100%' }}
+            >
               <div
                 style={{
                   ...contentStyle,
                   whiteSpace: 'pre-wrap',
-                  width: '100%',
+                  // width: '100%',
                 }}
               >
                 {content}
